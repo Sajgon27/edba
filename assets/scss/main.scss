@@ -9,9 +9,13 @@
 @use "layout/footer";
 
 //COMPONENTS
+@use "components/hero-simple";
 
 //PAGES
 @use "pages/home";
+@use "pages/blog";
+@use "pages/single-post";
+@use "pages/unia-europejska";
 
 // BLOCKS
 @use "blocks/hero-page";
@@ -32,7 +36,7 @@
 @use "blocks/nasze-liczby";
 @use "blocks/cutting-the-future";
 @use "blocks/historia";
-
+@use "blocks/certyfikaty";
 *,
 *::before,
 *::after {
@@ -249,6 +253,7 @@ a {
   }
 
   &--filled {
+    font-family: 'Archivo Expanded', sans-serif;
     background-color: $orange;
     color: $white;
     padding: $space-sm $space-lg;

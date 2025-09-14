@@ -50,7 +50,7 @@ $timeline = get_field('os_czasu');
         <div class="historia__content">
             <div class="container historia__container">
                 <?php if ($label) : ?>
-                    <div class="historia__label"><?php echo esc_html($label); ?></div>
+                    <div class="historia__label  label"><?php echo esc_html($label); ?></div>
                 <?php endif; ?>
                 
                 <?php if ($title) : ?>
@@ -78,6 +78,7 @@ $timeline = get_field('os_czasu');
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
+                                <div class="swiper-slide"></div>
                             </div>
                         </div>
                     </div>

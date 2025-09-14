@@ -1,2 +1,334 @@
-@use "../variables" as *;
 @use "../mixins" as *;
+@use "../variables" as *;
+
+.blog-page {
+  padding-bottom: $space-xl;
+}
+
+// Blog Filter Styles
+.blog-filter {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  margin: $space-xl 0;
+  
+  @include respond-to(tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__categories { 
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-md $space-2lg;
+  }
+  
+  &__category {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 400;
+    &.active {
+      font-weight: 700;
+    }
+  }
+}
+
+// Blog Search Styles
+.blog-search {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 680px;
+ 
+  align-items: stretch;
+    gap:$space-md $space-2lg;
+  flex-wrap: wrap;
+  &__input-wrap {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+      border-bottom: 1px solid $black;
+  }
+  
+  &__icon {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    color: $black;
+  }
+  
+  &__input {
+    width: 100%;
+    height: 100%;
+    min-width: 180px;
+    padding: $space-xs 16px $space-xs 54px;
+    border: none;
+    font-size: 1rem;
+    background: transparent;
+    
+    &:focus {
+      outline: none;
+    }
+    
+    &::placeholder {
+      color: rgba($black, 0.5);
+    }
+  }
+  
+  &__button {
+    flex: 0 0 auto;
+    padding: 12px $space-md !important;
+    background: $black !important;
+    color: $white;
+    border: 0 !important;
+    cursor: pointer;
+  }
+}
+
+
+
+.blog-grid {
+ 
+  width: 100%;
+  max-width: 100%;
+
+  &__first-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+         margin-bottom: $space-lg;
+    width: 100%;
+    
+    @include respond-to(tablet) {
+      grid-template-columns: 1fr 1fr;
+        
+    }
+    
+    @include respond-to(desktop) {
+      grid-template-columns: 50% 1fr 1fr;
+      gap: $space-lg;
+      margin-bottom: $space-xl;
+    }
+  }
+  
+  &__standard-rows {
+    display: grid;
+    grid-template-columns: 1fr;
+      gap:$space-lg;
+    
+    @include respond-to(tablet) {
+      grid-template-columns: 1fr 1fr;
+    
+    }
+    
+    @include respond-to(desktop) {
+      grid-template-columns: 1fr 1fr 1fr;
+       gap:$space-xl $space-lg;
+
+    }
+  }
+}
+
+// Blog Card Styles
+.blog-card {
+  position: relative;
+  height: 100%;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  
+  &:hover {
+  
+    
+    .blog-card__featured-image {
+      transform: scale(1.05);
+    }
+  }
+
+  // Large card (first item in first row)
+  &--large {
+    grid-column: 1;
+    grid-row: 1;
+    height: 350px;
+    
+    @include respond-to(tablet) {
+      grid-column: 1 / span 2;
+      height: 520px;
+    }
+    
+    @include respond-to(desktop) {
+      grid-column: 1;
+    }
+  }
+
+  // Medium cards (other items in first row)
+  &--medium {
+    
+    width: 100%;
+    height: 350px;
+    @include respond-to(tablet) {
+        height: 100%;
+      &:last-child {
+        grid-column: 1 / span 2;
+      }
+      &:nth-child(2) {
+        grid-column: 1/span 2;
+      }
+    }
+    
+    @include respond-to(desktop) {
+      &:nth-child(2) {
+        grid-column: 2;
+      }
+      
+      &:nth-child(3) {
+        grid-column: 3;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    height: 100%;
+    color: $white;
+    text-decoration: none;
+  }
+
+  &__image {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    
+    // Standard rows have a different image treatment
+    .blog-grid__standard-rows & {
+      height: 300px;
+      
+    }
+  }
+
+  &__featured-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to top,
+      rgba($black, 0.95) 0%,
+      rgba($black, 0.3) 70%,
+      rgba($black, 0.1) 100%
+    );
+    z-index: 1;
+  }
+
+  &__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: $space-lg;
+    z-index: 2;
+    
+    // Standard rows have a different content arrangement
+    .blog-grid__standard-rows & {
+      position: static;
+      padding: 0;
+    }
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: $space-sm;
+    color: $white;
+    text-transform: uppercase;
+    // Standard rows have a different title style
+    .blog-grid__standard-rows & {
+      font-size: 1.125rem;
+      color: $black;
+      margin-top: $space-xs;
+    }
+    
+    // Larger title for the large card
+    .blog-card--large & {
+       font-size: 1.25rem;
+      
+      @include respond-to(tablet) {
+       
+        max-width: 80%;
+      }
+  
+      
+    }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: rgba($white, 0.5);
+    
+    // Standard rows have a different meta style
+    .blog-grid__standard-rows & {
+       color: rgba($black, 0.4);
+       padding: $space-xs 0 $space-sm;
+    }
+  }
+
+  &__date, &__category {
+    display: inline-block;
+  }
+
+  &__separator {
+    margin: 0 $space-xs;
+  }
+}
+
+// Pagination
+.blog-pagination {
+  margin-top: $space-xl;
+  display: flex;
+  justify-content: center;
+  gap: $space-sm;
+  flex-wrap: wrap;
+  @include respond-to(mobile) {
+    justify-content: flex-end;
+     gap: $space-lg;
+  }
+  .pagination-prev, .pagination-next {
+    flex: 0 0 auto;
+  }
+  
+  .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: $black;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 1.25rem;
+
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    
+
+    &.disabled {
+      opacity: 0.25;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}

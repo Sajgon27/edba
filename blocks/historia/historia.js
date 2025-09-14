@@ -64,12 +64,13 @@ function initHistoriaSwipers() {
                 const event = slide.querySelector('.historia__event');
                 const dot = slide.querySelector('.historia__dot');
                 
+                // Add null checks to prevent errors
                 if (isActive) {
-                    event.classList.add('active');
-                    dot.classList.add('active');
+                    if (event) event.classList.add('active');
+                    if (dot) dot.classList.add('active');
                 } else {
-                    event.classList.remove('active');
-                    dot.classList.remove('active');
+                    if (event) event.classList.remove('active');
+                    if (dot) dot.classList.remove('active');
                 }
             });
         };
@@ -106,8 +107,11 @@ function initHistoriaSwipers() {
                     
                     // Ensure first slide is active
                     if (slides.length > 0) {
-                        slides[0].querySelector('.historia__event').classList.add('active');
-                        slides[0].querySelector('.historia__dot').classList.add('active');
+                        const firstEvent = slides[0].querySelector('.historia__event');
+                        const firstDot = slides[0].querySelector('.historia__dot');
+                        
+                        if (firstEvent) firstEvent.classList.add('active');
+                        if (firstDot) firstDot.classList.add('active');
                     }
                 },
                 slideChange: function() {
@@ -143,6 +147,28 @@ function initHistoriaSwipers() {
             
             if (swiper.isEnd) {
                 nextBtn.disabled = true;
+                
+                // Make the last slide active when we reach the end
+                const slides = container.querySelectorAll('.historia-timeline-swiper .swiper-slide');
+                if (slides.length > 0) {
+                    const lastIndex = slides.length - 1;
+                    const lastSlide = slides[lastIndex];
+                    const lastEvent = lastSlide.querySelector('.historia__event');
+                    const lastDot = lastSlide.querySelector('.historia__dot');
+                    
+                    // Clear all active classes first
+                    slides.forEach(slide => {
+                        const event = slide.querySelector('.historia__event');
+                        const dot = slide.querySelector('.historia__dot');
+                        
+                        if (event) event.classList.remove('active');
+                        if (dot) dot.classList.remove('active');
+                    });
+                    
+                    // Set active class on the last slide
+                    if (lastEvent) lastEvent.classList.add('active');
+                    if (lastDot) lastDot.classList.add('active');
+                }
             } else {
                 nextBtn.disabled = false;
             }
@@ -165,5 +191,28 @@ function initHistoriaSwipers() {
         
         // In the combined design, we don't need a separate getDotsToShow function
         // as dots are part of each slide
+        
+        // Add click event listeners to navigation buttons
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+                // Check if we're at the last slide after clicking next
+                setTimeout(() => {
+                    if (timelineSwiper.isEnd) {
+                        const slides = container.querySelectorAll('.historia-timeline-swiper .swiper-slide');
+                        if (slides.length > 0) {
+                            const lastSlide = slides[slides.length - 1];
+                            const event = lastSlide.querySelector('.historia__event');
+                            const dot = lastSlide.querySelector('.historia__dot');
+                            
+                            // Ensure the last slide gets the active class
+                            if (event) event.classList.add('active');
+                            if (dot) dot.classList.add('active');
+                        }
+                    }
+                    
+                    updateActiveStyles();
+                }, 50);
+            });
+        }
     });
 }

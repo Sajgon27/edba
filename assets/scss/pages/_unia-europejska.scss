@@ -1,0 +1,37 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+
+
+.page-id-570 {
+    .container.page-content {
+        margin: $space-xl auto;
+        max-width: 1100px;
+    }
+    h3 {
+        font-size: 2rem;
+        font-family: 'Archivo';
+        margin: $space-lg 0;
+    }
+    ol {
+        list-style-position: inside;
+        li {
+            margin-top: 15px;
+        }
+    }
+
+    li,p {
+        font-size: 1.25rem !important;
+        font-weight: 300 !important;
+        line-height: 1.5;
+        letter-spacing: 0.32px !important;
+    }
+
+    .wp-container-core-columns-is-layout-9d6595d7 {
+        gap:$space-2lg !important;
+        margin-bottom: $space-xl;
+        img {
+            margin: 0 auto !important;
+        }
+    }
+}

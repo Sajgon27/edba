@@ -1,6 +1,7 @@
 <?php
 
 require_once get_template_directory() . '/includes/block-registration.php';
+require_once get_template_directory() . '/includes/blog-ajax.php';
 
 function edba_enqueue_assets()
 {

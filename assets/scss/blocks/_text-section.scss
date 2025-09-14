@@ -81,3 +81,12 @@
         color: $white !important;
     }
 }
+
+.orange-desc {
+    .text-section__text {
+        color: $orange !important;
+        font-size: 2rem !important;
+        line-height: 1.5 !important;
+        max-width: 1100px !important;
+    }
+}

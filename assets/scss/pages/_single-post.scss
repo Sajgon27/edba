@@ -1,2 +1,391 @@
 @use "../variables" as *;
 @use "../mixins" as *;
+
+.single-post {
+  // Hero section with dark background
+  &__hero {
+    background-color: $black;
+    color: $white;
+
+    position: relative;
+    z-index: 1;
+    height: 500px;
+    display: flex;
+    padding-bottom: 80px;
+    @include respond-to(tablet) {
+    }
+
+    @include respond-to(desktop) {
+      padding-bottom: 200px;
+       height: 600px;
+    }
+    .container {
+      margin-top: auto;
+      max-width: 1370px;
+    }
+  }
+
+  // Header with meta and title
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+    align-items: flex-start;
+
+
+
+    @include respond-to(desktop) {
+      flex-direction: row;
+      gap: $space-xl;
+    }
+  }
+
+  // Meta section (category and date)
+  &__meta {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+
+    @include respond-to(desktop) {
+      flex: 0 0 20%;
+    }
+  }
+
+  // Category styling
+  &__category {
+    display: block;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: $orange;
+    letter-spacing: 1px;
+
+    @include respond-to(tablet) {
+      font-size: 1.125rem;
+    }
+  }
+
+  // Date styling
+  &__date {
+    display: block;
+    font-size: 0.875rem;
+    opacity: 0.8;
+
+    @include respond-to(tablet) {
+      font-size: 1rem;
+    }
+  }
+
+  // Post title
+  &__title {
+    flex: 1;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+
+
+
+    @include respond-to(desktop) {
+      font-size: 3.75rem;
+       line-height: 1.2;
+    }
+  }
+
+  // Featured image wrapper for positioning
+  &__featured-image-wrapper {
+    position: relative;
+    margin-top: -60px;
+
+    z-index: 2;
+
+    @include respond-to(tablet) {
+   
+    }
+
+    @include respond-to(desktop) {
+      margin-top: -170px;
+    }
+  }
+
+  // Featured image container
+  &__featured-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    max-height: 700px;
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  }
+
+  // Post content
+  &__content {
+   
+  }
+
+  // Two-column layout
+  &__layout {
+    display: flex;
+    flex-direction: column;
+    @include respond-to(desktop) {
+        flex-direction: row;
+    }
+  }
+
+  // Main content column
+  &__main {
+    width: 100%;
+    @include text-style;
+    @include respond-to(desktop) {
+      padding-right: $space-lg;
+      width: 75%;
+      margin-top: $space-lg;
+    }
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: $space-lg;
+      margin-bottom: $space-sm;
+      font-family: "Archivo" !important;
+      font-weight: 400 !important;
+    }
+    h2 {
+      font-size: 2rem !important;
+    }
+    h3 {
+      font-size: 1.75rem !important;
+    }
+    h4 {
+      font-size: 1.5rem !important;
+    }
+    h5 {
+      font-size: 1.25rem !important;
+    }
+    h6 {
+      font-size: 1rem !important;
+    }
+
+    p,
+    ul,
+    ol {
+      margin-bottom: 1.5em;
+      line-height: 1.7;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.5rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: $space-md 0;
+    }
+  }
+
+  // Sidebar column
+  &__sidebar {
+    width: 100%;
+    margin-top: $space-xl;
+
+    @include respond-to(desktop) {
+        width: 25%;
+        margin-top: 0;
+        border-top: 0;
+      border-left: 1px solid $black;
+      padding-left: $space-lg;
+      padding-top: 64px;
+    }
+  }
+
+  &__pagination {
+    font-family: 'Archivo Expanded', sans-serif;
+   margin-top: $space-lg;
+  display: flex;
+  justify-content: center;
+  gap: $space-sm;
+  flex-wrap: wrap;
+  @include respond-to(mobile) {
+    justify-content: space-between;
+     gap: $space-lg;
+  }
+  @include respond-to(desktop) {
+     margin-top: $space-xl;
+  }
+  .pagination-prev, .pagination-next {
+    flex: 0 0 auto;
+  }
+  
+  
+  a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: $black;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 1.25rem;
+
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    
+
+    &.disabled {
+      opacity: 0.25;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  }
+
+  .container {
+    max-width: 1370px !important;
+  }
+
+}
+
+
+
+// Sidebar widget styles
+.sidebar-widget {
+  margin-bottom: $space-2lg;
+  @include respond-to(desktop) {
+  margin-bottom: $space-xl;
+  }
+  &__title {
+    font-size: 2rem;
+    font-weight: 400;
+    font-family: "Archivo", sans-serif;
+    margin-bottom: $space-md;
+
+    display: inline-block;
+  }
+
+  // Search widget specific styles
+  &--search {
+    .blog-search {
+      display: flex;
+      flex-direction: column;
+      gap: $space-md;
+
+
+      .blog-search__button {
+        margin-top: $space-xs;
+        width: fit-content !important;
+        font-size: 1rem !important;
+        @include respond-to(tablet) {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+// Categories in sidebar
+.sidebar-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-sm;
+
+
+
+  &__count {
+    color: rgba($black, 0.5);
+  }
+}
+
+// Recent posts in sidebar
+.sidebar-posts {
+  display: flex;
+  flex-direction: column;
+  margin-top: $space-sm;
+}
+
+.sidebar-post {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: $black;
+  transition: color 0.3s ease;
+  margin-bottom: $space-2lg;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    .sidebar-post__thumbnail {
+      transform: scale(1.05);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 200px; // Max height as requested
+    overflow: hidden;
+    margin-bottom: $space-sm;
+  }
+
+  &__thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: $space-sm;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba($black, 0.4);
+    flex-wrap: wrap;
+  }
+
+  &__date,
+  &__category {
+    display: inline-block;
+  }
+
+  &__separator {
+    margin: 0 $space-xs;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+}
+
+
+.sidebar-social {
+  margin-bottom: $space-xl;
+  &__links {
+    display: flex;
+    gap: $space-md;
+    
+    img {
+      width: 40px;
+    }
+  }
+}

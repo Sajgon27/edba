@@ -52,7 +52,7 @@ $boxes = get_field('box');
                         
                         <?php if ($box['tytul']) : ?>
                             <div class="nasze-uslugi__title">
-                                <h5><?php echo esc_html($box['tytul']); ?>🡥</h5>
+                                <h5><?php echo esc_html($box['tytul']); ?> 🡥</h5>
                             </div>
                         <?php endif; ?>
                     </a>

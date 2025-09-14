@@ -1,0 +1,83 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.o-nas-film {
+    padding: $space-xl 0;
+    background-color: $black;
+    color: $white;
+
+    @include respond-to(desktop) {
+        padding: $space-2xl 0;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__title {
+        text-align: center;
+        margin-bottom: $space-xl;
+        max-width: 1300px;
+    }
+
+    &__video-container {
+        position: relative;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        cursor: pointer;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        aspect-ratio: 16/9;
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        transition: opacity 0.3s ease;
+    }
+
+    &__play-button {
+        opacity: 1;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+
+        svg {
+            width: 80px;
+            height: 80px;
+
+            @include respond-to(mobile) {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &__video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    // For when the video is playing
+    &--playing {
+        .o-nas-film__overlay {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+}

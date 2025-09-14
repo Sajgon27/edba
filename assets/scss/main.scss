@@ -5,11 +5,33 @@
 // GENERAL STYLES, MAIN FILE
 /////////////////////// //LAYOUT
 @use "layout/header";
+@use "layout/menu";
 @use "layout/footer";
 
 //COMPONENTS
 
 //PAGES
+@use "pages/home";
+
+// BLOCKS
+@use "blocks/hero-page";
+@use "blocks/text-section";
+@use "blocks/tekst-zdjecie";
+@use "blocks/sekcja-bloki";
+@use "blocks/orange-cta";
+@use "blocks/maszyny-kontrola";
+@use "blocks/sekcja-bloki-2";
+@use "blocks/etapy-kontroli";
+@use "blocks/blok-zdjecie";
+@use "blocks/mini-galeria";
+@use "blocks/materialy";
+@use "blocks/nasze-uslugi";
+@use "blocks/branze-boxy";
+@use "blocks/video-zdjecie";
+@use "blocks/o-nas-film";
+@use "blocks/nasze-liczby";
+@use "blocks/cutting-the-future";
+@use "blocks/historia";
 
 *,
 *::before,
@@ -24,15 +46,46 @@ html {
 }
 
 body {
-  font-family: "Montserrat";
-  font-weight: 400;
+  font-family: "Archivo", sans-serif;
+  font-weight: 300;
   font-size: 16px;
-  line-height: 1.6;
   color: $black;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Archivo Expanded", sans-serif;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+
+  @include respond-to(desktop) {
+    font-size: 3.75rem;
+  }
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0;
+
+  @include respond-to(desktop) {
+    font-size: 2rem;
+  }
+}
+
 img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   display: block;
 }
@@ -41,4 +94,197 @@ a {
   color: $black;
   text-decoration: none;
   transition: color 0.2s;
+}
+
+// GLOBAL CLASSES
+.container {
+  max-width: 1630px;
+  padding-inline: 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.label {
+  font-family: "Archivo Expanded", sans-serif;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: $orange;
+  text-transform: uppercase;
+}
+
+.text-highlight {
+  color: $orange;
+}
+
+// GLOBAL PADDINGS FOR SECTION
+.pb-xl {
+  padding-bottom: $space-xl !important;
+  @include respond-to(desktop) {
+    padding-bottom: $space-2xl !important;
+  }
+}
+.pt-xl {
+  padding-top: $space-xl !important;
+  @include respond-to(desktop) {
+    padding-top: $space-2xl !important;
+  }
+}
+.pb-lg {
+  padding-bottom: $space-lg !important;
+  @include respond-to(desktop) {
+    padding-bottom: $space-xl !important;
+  }
+}
+.pt-lg {
+  padding-top: $space-lg !important;
+  @include respond-to(desktop) {
+    padding-top: $space-xl !important;
+  }
+}
+.pb-md {
+  padding-bottom: $space-md !important;
+  @include respond-to(desktop) {
+    padding-bottom: $space-lg !important;
+  }
+}
+.pt-md {
+  padding-top: $space-md !important;
+  @include respond-to(desktop) {
+    padding-top: $space-lg !important;
+  }
+}
+.pt-0 {
+  padding-top: 0 !important;
+}
+.pb-0 {
+  padding-bottom: 0 !important;
+}
+
+.img-o-nas {
+  position: relative;
+
+  img {
+  
+    object-fit: cover;
+   
+    @include respond-to(mobile) {
+      aspect-ratio: 21/9;
+    }
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px; /* thickness of border */
+    background: #000; /* border color */
+    width: 100vw; /* full viewport width */
+    margin-left: calc(-50vw + 50%); /* center align with container */
+  }
+}
+
+.swiper-pagination {
+  position: relative !important;
+  margin-top: $space-md !important;
+  text-align: center !important;
+  bottom: 0 !important;
+
+  .swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+    background: $black !important;
+    opacity: 0.3 !important;
+    margin: 0 4px !important;
+
+    &-active {
+      opacity: 1 !important;
+      background: $orange !important;
+    }
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xs;
+  font-size: 1.25rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+
+  &--primary {
+    color: $black;
+
+    &::after {
+      content: "";
+      background-image: url("../icons/btn-black.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: relative;
+      font-size: 1rem;
+      width: 14px;
+      height: 14px;
+      transition: 0.3s all;
+      left: 5px;
+    }
+  }
+
+  &--secondary {
+    color: $white;
+
+    &::after {
+      content: "";
+      background-image: url("../icons/btn-white.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: relative;
+      font-size: 1rem;
+      width: 14px;
+      height: 14px;
+      transition: 0.3s all;
+      left: 5px;
+    }
+  }
+
+  &--filled {
+    background-color: $orange;
+    color: $white;
+    padding: $space-sm $space-lg;
+  }
+
+  &:hover {
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+// GLOBAL CLASSES FOR GUTENBERG
+.bg-black {
+  background-color: $black;
+}
+
+.img-gutenberg {
+  height: 300px;
+  display: block;
+
+  @include respond-to(desktop) {
+    height: 450px;
+  }
+
+  img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+  }
+}
+
+.img-transform {
+  margin-bottom: -190px;
+}
+
+.padding-t-xxxl {
+  padding-top: 314px;
 }

@@ -1,0 +1,86 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.etapy-kontroli {
+    padding: 0 0 $space-xl;
+    @include respond-to(desktop) {
+        padding: 0 0 $space-2xl;
+    }
+  &__header {
+    margin-bottom: $space-md;
+  }
+
+  &__content {
+    margin-top: $space-md;
+    position: relative;
+    width: 100%;
+    overflow: hidden; // This will prevent horizontal scrollbars from the extended line
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xl;
+
+    @include respond-to(tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    // Add horizontal line for tablet and desktop
+    @include respond-to(tablet) {
+      &::after {
+        content: '';
+        position: absolute;
+        top: 35px;
+        left: -100vw;
+        right: -100vw;
+        height: 1px;
+        background-color: $black;
+        z-index: -1;
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+ 
+ 
+    width: 100%;
+
+    @include respond-to(tablet) {
+      width: 30%;
+    }
+  }
+
+  &__number {
+    margin-bottom: 40px;
+    background-color: $white;
+    padding: 0 $space-sm;
+    position: relative;
+    z-index: 1;
+    width: fit-content;
+    img {
+      max-width: 120px;
+      height: auto;
+    }
+  }
+
+  &__title {
+    margin-bottom: $space-md;
+    font-size: 1.5rem;
+    font-weight: 400;
+
+ 
+  }
+
+  &__text {
+    @include text-style();
+    
+    @include respond-to(tablet) {
+      max-width: 440px;  
+    }
+  }
+}

@@ -1,18 +1,20 @@
 //Colors
-$black: #121214;
-$white: white;
-$gray:#DCDCDC;
-$beige:#F8F8F8;
-$red: #990F02;
-$light-red:#990F020D;
-$light-black:#252525CC;
-$light-white: #FFFFFFCC;
+$black: #121212;
+$white: #FFFFFF;
+$orange: #C74D2B;
+
 //Spacing
 $space-xs: 8px;
 $space-sm: 16px;
 $space-md: 24px;
 $space-lg: 32px;
-$space-xl: 64px;
+$space-2lg: 48px;
+$space-xl: 84px;
+$space-2xl: 140px;
+
+//Sections width
+$section-label:32%;
+$section-text:68%;
 
 
 
@@ -22,3 +24,134 @@ $breakpoint-tablet: 768px;
 $breakpoint-tablet-horizontal: 942px;
 $breakpoint-desktop: 1024px;
 $breakpoint-laptop: 1310px;
+
+
+/* Archivo Font Family */
+
+/* Standard Archivo variants */
+@font-face {
+  font-family: 'Archivo';
+  src: url('../fonts/Archivo-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('../fonts/Archivo-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('../fonts/Archivo-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('../fonts/Archivo-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('../fonts/Archivo-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('../fonts/Archivo-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('../fonts/Archivo-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('../fonts/Archivo-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('../fonts/Archivo-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+
+/* Expanded Archivo variants */
+@font-face {
+  font-family: 'Archivo Expanded';
+  src: url('../fonts/ArchivoExpanded-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo Expanded';
+  src: url('../fonts/ArchivoExpanded-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo Expanded';
+  src: url('../fonts/ArchivoExpanded-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo Expanded';
+  src: url('../fonts/ArchivoExpanded-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo Expanded';
+  src: url('../fonts/ArchivoExpanded-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo Expanded';
+  src: url('../fonts/ArchivoExpanded-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo Expanded';
+  src: url('../fonts/ArchivoExpanded-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo Expanded';
+  src: url('../fonts/ArchivoExpanded-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo Expanded';
+  src: url('../fonts/ArchivoExpanded-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}

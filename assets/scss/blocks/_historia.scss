@@ -1,0 +1,276 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.historia {
+    padding: $space-xl 0;
+    overflow: hidden;
+    
+    @include respond-to(desktop) {
+        padding: $space-2xl 0;
+    }
+    
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        
+        @include respond-to(desktop) {
+            flex-direction: row;
+           
+            margin: 0 auto;
+        }
+    }
+    
+    &__images {
+        width: 100%;
+        height: 300px;
+        position: relative;
+        overflow: hidden;
+        
+        @include respond-to(tablet) {
+            height: 400px;
+        }
+        
+        @include respond-to(desktop) {
+            width: 42%;
+            height: 600px;
+        }
+    }
+    
+    &__slideshow {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    
+    &__slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease;
+        background-position: center;
+        background-size: cover;
+        
+        &.active {
+            opacity: 1;
+            z-index: 5;
+        }
+        
+        &-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; // Hide actual img, using background-image for better control
+        }
+    }
+    
+    &__content {
+        width: 100%;
+        padding: $space-lg 0;
+        
+        @include respond-to(desktop) {
+            width: 58%;
+            padding: $space-xl 0 $space-xl $space-xl;
+        }
+    }
+    
+    &__container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 $space-md;
+        
+        @include respond-to(desktop) {
+            margin: 0;
+            padding: 0;
+        }
+    }
+    
+    &__label {
+        color: $orange;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: $space-sm;
+    }
+    
+    &__title {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: $space-lg;
+        
+        @include respond-to(tablet) {
+            font-size: 38px;
+        }
+        
+        @include respond-to(desktop) {
+            font-size: 48px;
+        }
+    }
+    
+    &__text {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: $space-xl;
+        
+        @include respond-to(tablet) {
+            font-size: 18px;
+        }
+    }
+    
+    &__timeline {
+        margin-top: $space-xl;
+        overflow: hidden;
+    }
+    
+    &__timeline-container {
+        position: relative;
+        margin-bottom: $space-lg;
+    }
+    
+    &__line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 1px;
+        background-color: $black;
+        z-index: -1;
+        transform: translateY(0); 
+    }
+    
+    .historia-timeline-swiper {
+       overflow: visible;
+        width: 100%;
+        scroll-snap-type: x mandatory;
+        
+        .swiper-wrapper {
+            transition-timing-function: ease-out;
+            display: flex;
+            width: 100%;
+        }
+        
+        .swiper-slide {
+            scroll-snap-align: start;
+            transition: transform 0.3s ease;
+            width: auto;
+            flex-shrink: 0;
+            height: auto;
+            display: flex;
+            position: relative;
+            border-bottom: none; // Remove bottom border from slides
+        }
+    }
+    
+    &__event {
+        padding: $space-md $space-xl $space-lg 0;
+       
+        transition: all 0.4s ease;
+        transform-origin: left center;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        border-bottom: 0; // No border needed since we have dots
+       
+        margin-right: 0; // No right margin to avoid gaps
+          .historia__year , .historia__description {
+ opacity: 0.5;
+          }
+        &.active,
+        .swiper-slide-active & {
+            opacity: 1;
+            transform: scale(1);
+            .historia__year , .historia__description {
+                opacity: 1;
+            }
+        }
+        
+        .swiper-slide:not(.swiper-slide-active) & {
+            transform: scale(0.98);
+        }
+    }
+    
+    &__year {
+        font-size: 24px;
+        font-weight: 700;
+        color: $orange;
+        margin-bottom: $space-sm;
+        
+        @include respond-to(tablet) {
+            font-size: 30px;
+        }
+    }
+    
+    &__description {
+        font-size: 16px;
+        line-height: 1.4;
+        margin-bottom: $space-md;
+    }
+    
+    &__dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: $black;
+        border: 2px solid $black;
+        position: absolute;
+        bottom: -6px; // Position halfway over the line
+        
+        z-index: 6;
+        transition: all 0.3s ease;
+        
+        &.active,
+        .swiper-slide-active & {
+            background-color: $orange;
+            border-color: $orange;
+            width: 16px;
+            height: 16px;
+            bottom: -6px; // Adjust for larger size
+        }
+    }
+    
+    &__timeline-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: $space-md;
+    }
+    
+    &__nav {
+        background: none;
+        border: 2px solid gray;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: $black;
+        
+        &:hover {
+            border-color: $orange;
+            color: $orange;
+        }
+        
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        &--prev svg {
+            margin-right: 2px;
+        }
+        
+        &--next svg {
+            margin-left: 2px;
+        }
+    }
+}

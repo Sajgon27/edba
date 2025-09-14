@@ -1,0 +1,72 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.nasze-liczby {
+  padding-top: 0;
+  padding-bottom: $space-xl;
+
+  @include respond-to(desktop) {
+    padding-bottom: $space-2xl;
+  }
+
+  .text-section {
+    padding-bottom: $space-lg;
+
+    @include respond-to(tablet) {
+      padding-bottom: $space-xl;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-xl;
+
+    @include respond-to(mobile) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $space-xl $space-2xl;
+    }
+    @include respond-to(desktop) {
+      max-width: 700px;
+      margin-left: 32%;
+      padding-left: 24px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+  }
+
+  &__number {
+    font-family: "Archivo", sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: $orange;
+    line-height: 1;
+
+    @include respond-to(tablet) {
+      font-size: 70px;
+    }
+
+    @include respond-to(desktop) {
+      font-size: 84px;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 400;
+    color: $black;
+
+    @include respond-to(tablet) {
+      font-size: 18px;
+    }
+  }
+}

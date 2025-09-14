@@ -1,0 +1,103 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.mini-galeria {
+
+  &__grid {
+    &.desktop {
+      display: none;
+      
+      @include respond-to(tablet) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $space-md;
+      }
+    }
+  }
+  .text-section {
+    padding: 0 0 $space-lg !important;
+    @include respond-to(desktop) {
+      padding: 0 0 $space-xl !important;
+    }
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    margin-bottom: $space-md;
+    
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+  &__number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $orange;
+    margin-bottom: $space-xs;
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: $space-md 0 $space-sm;
+  }
+
+  &__text {
+    @include text-style();
+    max-width: 90%;
+  }
+
+  &__swiper {
+    &.mobile {
+      display: block;
+      
+      @include respond-to(tablet) {
+        display: none;
+      }
+      
+      .swiper {
+        width: 100%;
+       
+      }
+      
+      .swiper-pagination {
+        bottom: $space-sm;
+        
+        .swiper-pagination-bullet {
+          background-color: $orange;
+          opacity: 0.3;
+          
+          &-active {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.mini-gallery-products {
+  .mini-galeria__grid {
+       grid-template-columns: repeat(2, 1fr);
+    @include respond-to(desktop) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .mini-galeria__image-wrapper {
+    margin: 0 auto;
+    height: 320px;
+    width: auto;
+    img {
+      height: 100%;
+    }
+  }
+}

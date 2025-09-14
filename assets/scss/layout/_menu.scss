@@ -1,0 +1,391 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.fullscreen-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background-color: $black;
+  z-index: 1000;
+  opacity: 0;
+  transition: right 0.5s ease, opacity 0.5s ease;
+  overflow: hidden;
+
+  &.active {
+    right: 0;
+    opacity: 1;
+  }
+
+  &__header {
+    width: 100%;
+    border-bottom: 1px solid rgba($white, 0.2);
+    padding: $space-md 0;
+  }
+  &__inner {
+    padding-inline: 5vw;
+  }
+
+  &__logo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    max-width: 280px;
+    width: 70%;
+    @include respond-to(tablet) {
+      gap: $space-lg;
+      max-width: 390px;
+    }
+    @include respond-to(desktop) {
+      width: 100%;
+    }
+    img {
+      height: auto;
+    }
+  }
+
+  &__close {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+
+    .close-line {
+      transition: all 0.3s ease;
+    }
+
+    &:hover .close-line {
+      stroke: $orange;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 80px); // Account for header height
+    max-height: calc(100% - 80px); // Ensure it doesn't exceed viewport
+
+    @include respond-to(desktop) {
+      flex-direction: row;
+    }
+  }
+
+  &__image {
+    display: none;
+
+    @include respond-to(desktop) {
+      display: block;
+
+      max-width: 50%;
+      height: 100%;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+
+  &__right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    overflow-y: auto;
+    @include respond-to(desktop) {
+      min-width: 820px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: flex-start;
+    padding: $space-lg;
+    @include respond-to(desktop) {
+      padding: $space-xl 5vw;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__primary {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    li {
+      margin-bottom: $space-md;
+      position: relative;
+
+      &:last-child {
+        margin-bottom: 0; /* Remove bottom margin from last item */
+      }
+
+      a {
+        color: $white;
+        text-decoration: none;
+        font-family: "Archivo Expanded", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        display: inline-block;
+
+        @include respond-to(tablet) {
+          font-size: 2.5rem;
+        }
+
+        @include respond-to(desktop) {
+          font-size: 3.625em;
+        }
+
+        &:hover {
+          color: $orange;
+        }
+      }
+
+      &.has-submenu {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: $space-md; /* Fixed spacing, same as regular items */
+
+        @include respond-to(desktop) {
+          flex-direction: row;
+          align-items: center;
+          max-width: 680px;
+        }
+        @include respond-to(desktop) {
+        max-width: 720px;
+        }
+
+        > a {
+          display: inline-block;
+        }
+
+        > .submenu-toggle {
+          cursor: pointer;
+          transition: transform 0.3s ease;
+          color: $white;
+          vertical-align: middle;
+          position: absolute;
+          right: 0;
+          top: 0;
+          padding-top: 5px;
+          @include respond-to(desktop) {
+            display: none;
+          }
+
+          &:hover {
+            color: $orange;
+          }
+
+          &.active {
+            transform: rotate(180deg);
+          }
+        }
+
+        > .sub-menu {
+          display: none;
+          height: 0;
+          overflow: hidden;
+          opacity: 0;
+          margin: 0;
+          padding: 0;
+          transition: opacity 0.3s ease, margin-top 0.3s ease,
+            padding-left 0.3s ease, height 0.3s ease;
+
+          @include respond-to(desktop) {
+            position: relative;
+            padding-left: $space-xl;
+            margin-top: 0;
+            margin-left: $space-lg;
+            margin-bottom: 0; /* Ensure no extra spacing at bottom */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px 12px;
+            height: auto;
+            right: 0;
+          }
+        }
+
+        &:hover,
+        &.active {
+          > a {
+            color: $orange;
+          }
+
+          > .sub-menu {
+            @include respond-to(desktop) {
+              display: grid;
+              opacity: 1;
+              visibility: visible;
+              position: absolute;
+            }
+          }
+        }
+      }
+
+      &.active {
+        > a {
+          color: $orange;
+        }
+
+        > .sub-menu {
+          display: block;
+          height: auto;
+          opacity: 1;
+          margin-top: $space-sm;
+          padding-left: $space-md;
+
+          @include respond-to(desktop) {
+            display: grid;
+            visibility: visible;
+          }
+        }
+      }
+    }
+
+    .sub-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+
+      li {
+        margin-bottom: $space-xs;
+        padding: 0;
+        &:last-child {
+          margin-bottom: 0; /* Remove bottom margin from last submenu item */
+        }
+
+        a {
+          font-size: 1rem;
+          font-weight: 400;
+        }
+      }
+    }
+
+    li.active > .sub-menu {
+      max-height: 1000px; /* Large enough to accommodate all potential submenu content */
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: $space-lg;
+    margin-top: auto; /* Push to bottom of container */
+    padding: $space-lg;
+    border-top: 1px solid $white;
+    @include respond-to(tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: $space-lg 5vw;
+    }
+    h6 {
+      margin-bottom: $space-md;
+      font-size: 1rem;
+    }
+  }
+
+  &__contact {
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+
+    @include respond-to(tablet) {
+      flex-direction: row;
+      gap: $space-xl;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-info__inner {
+      display: flex;
+      align-items: flex-start;
+      gap: $space-xl;
+    }
+
+    p {
+      margin: 0 0 $space-xs 0;
+      font-size: 1rem;
+    }
+
+    a {
+      color: $white;
+      text-decoration: none;
+      font-size: 1rem;
+      display: block;
+      margin-bottom: $space-xs;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $orange;
+      }
+    }
+  }
+
+  &__social {
+    color: $white;
+
+    p {
+      margin: 0 0 $space-xs 0;
+      font-size: 1rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: $space-sm;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
+
+        img {
+          width: 26px;
+          height: 26px;
+        }
+      }
+    }
+  }
+}
+
+// Prevent body scrolling when menu is open
+body.menu-open {
+  overflow: hidden;
+}
+
+// Adjust header when menu is open
+.header {
+  &.menu-open {
+    border-color: transparent;
+  }
+}

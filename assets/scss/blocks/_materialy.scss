@@ -1,0 +1,115 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.materialy {
+  background-color: $black;
+  color: $white;
+  padding-bottom: $space-xl;
+  @include respond-to(desktop) {
+    padding-bottom: $space-2xl;
+  }
+  &__header {
+    padding: $space-xl 0 $space-lg;
+    @include respond-to(desktop) {
+      padding: $space-2xl 0 $space-2xl;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-lg;
+    @include respond-to(tablet) {
+      gap: $space-xl;
+    }
+    @include respond-to(desktop) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: $space-2xl;
+    }
+  }
+
+  &__boxes {
+    &.desktop {
+      display: none;
+
+      @include respond-to(desktop) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: $space-md;
+        width: 45%;
+      }
+    }
+  }
+
+  &__box {
+    border: 1px solid rgba($white, 0.3);
+    padding: $space-lg 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: $orange;
+      background-color: rgba($white, 0.05);
+    }
+
+    &-text {
+      font-size: 1.5em;
+      font-weight: 400;
+      text-align: center;
+      line-height: 1.2;
+      small {
+        font-size: 0.8rem;
+
+      }
+    }
+  }
+
+  &__text-section {
+    @include respond-to(desktop) {
+      width: 50%;
+    }
+  }
+
+  &__text {
+    @include text-style();
+    color: $white !important;
+  }
+
+  &__swiper {
+    &.mobile {
+      display: block;
+      margin-top: $space-md;
+
+      @include respond-to(desktop) {
+        display: none;
+      }
+
+      .swiper {
+        width: 100%;
+        
+        margin-top: $space-2lg;
+      }
+
+      .swiper-pagination {
+        bottom: $space-sm;
+      }
+    }
+  } 
+  span.swiper-pagination-bullet {
+    background: rgb(184, 184, 184) !important;
+  }
+  .text-section {
+    &__title {
+      color: $white;
+    }
+  }
+
+  .label {
+    color: $orange;
+  }
+}

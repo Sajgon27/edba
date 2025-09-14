@@ -1,0 +1,73 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.orange-cta {
+    position: relative;
+    background-color: $orange;
+    color: $white;
+    padding: $space-2xl 0;
+    overflow: hidden;
+
+    @include respond-to(desktop) {
+        padding: 200px 0;
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__content {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    &__etykieta {
+        color: $white !important;
+    }
+
+    &__tytul {
+        font-size: 2rem;
+        font-weight: 500;
+        line-height: 1.2;
+        margin-top: 12px;
+        color: $white;
+
+        @include respond-to(tablet) {
+            font-size: 2.5rem;
+        }
+
+        @include respond-to(desktop) {
+            font-size: 3.5rem;
+        }
+
+        svg {
+            display: inline-block;
+            width: 1em;
+            /* scales with text size */
+            height: 1em;
+            /* keeps aspect ratio with text */
+            vertical-align: middle;
+            /* align with text */
+            stroke: currentColor;
+            /* inherit text color */
+            fill: none;
+            /* no fill, only stroke */
+            stroke-width: 2;
+        }
+    }
+
+
+
+
+
+    &:hover {
+        .orange-cta__arrow {
+            transform: translateX(10px);
+        }
+    }
+}

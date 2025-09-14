@@ -1,0 +1,151 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.blok-zdjecie {
+  position: relative;
+  
+  display: flex;
+  flex-direction: column;
+  margin: $space-lg 0;
+  @include respond-to(desktop) {
+    min-height: 500px;
+    padding: $space-xl 0;
+  }
+  
+  &__image-wrapper {
+    width: 100%;
+    margin-bottom: $space-md;
+        height: calc(100% - 64px);
+    @include respond-to(desktop) {
+      position: absolute;
+      left: 0;
+      width: 32%;
+    height: calc(100% - 124px);
+      margin-bottom: 0;
+     
+    }
+  }
+  
+  &__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    
+    @include respond-to(desktop) {
+      aspect-ratio: auto;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .container {
+    @include respond-to(desktop) {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  
+  &__content {
+    width: 100%;
+    
+    @include respond-to(desktop) {
+      width: 68%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
+
+  
+  &__title {
+    margin-top: 12px;
+  }
+  
+  &__text {
+   
+    @include text-style();
+    margin-top: $space-lg;
+    @include respond-to(desktop) {
+      margin-top: $space-2lg;
+    }
+  }
+  
+  &__boxes {
+    margin-top: $space-xl;
+    &.desktop {
+      display: none;
+      
+      @include respond-to(tablet) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $space-md;
+        
+      }
+    }
+  }
+  
+  &__box {
+    background-color: $white;
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    &-icon {
+      margin-bottom: $space-md;
+      
+      img {
+        max-width: 48px;
+        height: auto;
+      }
+    }
+    
+    &-title {
+      font-size: 1em;
+      font-weight: 700;
+    
+    }
+    
+    &-text {
+      @include text-style();
+      margin-top: $space-lg;
+    }
+  }
+  
+  &__swiper {
+    &.mobile {
+      display: block;
+      margin-top: $space-2lg;
+      @include respond-to(tablet) {
+        display: none;
+      }
+      
+      .swiper {
+        width: 100%;
+        padding-bottom: $space-xl; // Space for pagination
+      }
+      
+      .swiper-pagination {
+        bottom: $space-sm;
+        
+        .swiper-pagination-bullet {
+          background-color: $orange;
+          opacity: 0.3;
+          
+          &-active {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+.blok-zdjecie-2-col {
+    .blok-zdjecie__boxes {
+        @include respond-to(tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}

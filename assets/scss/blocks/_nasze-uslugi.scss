@@ -1,0 +1,138 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.nasze-uslugi {
+  padding-bottom: $space-xl;
+  @include respond-to(desktop) {
+    padding-bottom: $space-2xl;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    @include respond-to(desktop) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    // This removes double borders in the grid
+    & > *:not(:last-child) {
+      @include respond-to(desktop) {
+        border-right: none;
+      }
+    }
+  }
+  .text-section {
+    padding-bottom: $space-2lg !important;
+    @include respond-to(desktop) {
+      padding-bottom:  100px !important;
+    }
+  }
+  &__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: $space-lg;
+    border: 1px solid $black;
+    text-decoration: none;
+    color: $black;
+    min-height: 260px;
+    height: 100%;
+    transition: all 0.3s ease;
+
+    &:hover {
+      .nasze-uslugi__title::after {
+        transform: translateY(-5px) translateX(5px);
+      }
+    }
+
+    @include respond-to(desktop) {
+      &:not(:nth-child(3n)) {
+        border-right: none;
+      }
+
+      &:nth-child(n + 4) {
+        border-top: none;
+      }
+    }
+  }
+
+  &__icon {
+    margin-bottom: $space-md;
+
+    img {
+      max-height: 48px;
+      width: auto;
+      display: block;
+    }
+  }
+
+  &__title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    h5 {
+      font-size: 2rem;
+      font-weight: 600 !important;
+      max-width: 80%;
+    }
+  }
+}
+
+.uslugi-branze {
+  .nasze-uslugi__grid {
+    @include respond-to(tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond-to(desktop) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .nasze-uslugi__box {
+    border-bottom: 0;
+    &:last-child {
+      border-bottom: 1px solid $black;
+    }
+    @include respond-to(tablet) {
+      &:first-child {
+        border-right: 0;
+        border-bottom: 0;
+      }
+      &:nth-child(2) {
+        border-bottom: 0;
+      }
+      &:nth-child(3) {
+        border-right: 0;
+        border-bottom: 1px solid $black;
+      }
+    }
+
+    @include respond-to(desktop) {
+      border-bottom: 1px solid $black;
+      &:last-child {
+        border-right: 1px solid $black;
+        border-top: 1px solid $black;
+      }
+          &:first-child {
+        
+        border-bottom: 1px solid $black;
+      }
+      &:nth-child(2) {
+        border-bottom: 1px solid $black;
+      }
+    }
+  }
+  .nasze-uslugi__title h5 {
+    @include respond-to(desktop) {
+      font-size: 1.5rem;
+    }
+    @media (min-width: 1300px) {
+      font-size: 2rem;
+    }
+  }
+}

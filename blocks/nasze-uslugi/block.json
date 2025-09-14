@@ -1,0 +1,12 @@
+{
+  "name": "acf/nasze-uslugi",
+  "title": "Nasze usługi",
+  "description": "Sekcja nasze usługi z ikonami i opisami.",
+  "category": "edba",
+  "icon": "<svg xmlns='http://www.w3.org/2000/svg' fill='#91FF50' viewBox='0 0 24 24'><path d='M12 2L2 7h20L12 2zM2 9v13h20V9L12 4 2 9z'/></svg>",
+  "textdomain": "edba",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "nasze-uslugi.php"
+  }
+}

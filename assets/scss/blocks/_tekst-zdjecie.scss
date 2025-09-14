@@ -1,0 +1,109 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.tekst-zdjecie {
+    padding: 0 0 $space-xl;
+    position: relative;
+    overflow: hidden;
+    @include respond-to(desktop) {
+            padding: $space-xl 0;
+    }
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+
+        @include respond-to(desktop) {
+            flex-direction: row;
+            gap: $space-xl;
+            align-items: center;
+        }
+
+        @media (min-width: 1300px) {
+            gap: $space-2xl;
+        }
+    }
+
+    &__image-wrapper {
+        width: 100%;
+        position: relative;
+        margin-bottom: $space-lg;
+        display: flex;
+        align-items: center;
+        aspect-ratio: 1;
+        height: 615px; /* Fixed height to ensure images are visible */
+
+        @include respond-to(desktop) {
+            width: 50%;
+            min-width: 50%;
+            margin-bottom: 0;
+            position: relative;
+            left: 0;
+            height: 815px; /* Match the max-height from the original image settings */
+        }
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 1;
+        @include respond-to(desktop) {
+   max-height: 815px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__content {
+
+        @include respond-to(desktop) {
+
+            max-width: 50%;
+        }
+    }
+
+
+    &__section {
+        padding-bottom: $space-md;
+        border-bottom: 1px solid $black;
+        margin-bottom: $space-xl;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__section-inner {
+        padding: 0 20px;
+
+        @include respond-to(desktop) {
+            padding: 0 20px 0 0;
+        }
+
+        @media (min-width: 1300px) {
+            padding: 0 $space-xl 0 0;
+        }
+    }
+
+    &__title {
+
+        margin-bottom: $space-md;
+
+    }
+
+    &__text {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: $black;
+
+
+        @include respond-to(tablet) {
+            font-size: 1.125rem;
+        }
+
+        @media (min-width: 1400px) {
+            max-width: 85%;
+        }
+    }
+}

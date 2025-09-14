@@ -1,0 +1,138 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.sekcja-bloki {
+   
+ 
+    &__header {
+        text-align: center;
+      
+        margin: 0 auto $space-2lg;
+        @include respond-to(desktop) {
+               margin: 0 auto $space-xl;
+        }
+    }
+    
+    &__etykieta {
+      
+        margin-bottom: 12px;
+    }
+    
+    &__tytul {
+   max-width: 1200px;
+
+        margin: 0  auto;
+     
+    }
+    
+    &__tekst {
+        @include text-style();
+        max-width: 800px;
+        margin: $space-lg auto 0;
+        @include respond-to(desktop) {
+               margin: $space-2lg auto 0;
+        }
+    
+    }
+    
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $space-xl;
+        
+        @include respond-to(tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        @include respond-to(desktop) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    
+    &__item {
+        display: flex;
+        flex-direction: column;
+      
+      
+        padding: $space-md;
+    }
+    
+    &__item-icon {
+        margin-bottom: $space-md;
+   
+        display: flex;
+        align-items: center;
+       
+        
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+        }
+    }
+    
+    &__item-title {
+        
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: $space-md;
+        
+     
+    }
+    
+    &__item-text {
+        @include text-style;
+    }
+    
+    &__swiper {
+        overflow: hidden;
+        
+        .swiper-slide {
+            height: auto;
+        }
+        
+ 
+    }
+    
+    // Responsive display helpers
+    .desktop-only {
+        display: none;
+        
+        @include respond-to(tablet) {
+            display: grid;
+        }
+    }
+    
+    .mobile-only {
+        display: block;
+        
+        @include respond-to(tablet) {
+            display: none;
+        }
+    }
+}
+
+.sekcja-bloki.blocks-4-col {
+    .sekcja-bloki__grid {
+        @include respond-to(desktop) {
+            grid-template-columns: repeat(4, 1fr) !important; 
+        }
+    }
+}
+
+.bloki-numbers {
+    padding-top: 0 !important;
+    .sekcja-bloki__item-title {
+        margin-bottom: $space-sm !important;
+        margin-top: $space-md;
+        font-size: 1.5rem !important;
+        font-weight: 400 !important;
+    }
+    .sekcja-bloki__item {
+        padding: 0 !important;
+    }
+    .sekcja-bloki__header {
+        margin: 0 !important;
+    }
+}

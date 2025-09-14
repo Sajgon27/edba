@@ -1,0 +1,83 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.text-section {
+    padding: $space-xl 0;
+
+    @include respond-to(desktop) {
+        padding: $space-2xl 0;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        @include respond-to(desktop) {
+            flex-direction: row;
+            gap: $space-md;
+        }
+
+    }
+
+    .label {
+        margin-bottom: 12px;
+        width: 100%;
+
+        @include respond-to(tablet) {
+            width: 80;
+
+        }
+
+        @include respond-to(desktop) {
+            margin-bottom: 0;
+            width: $section-label;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: $space-lg;
+        @include section-text;
+
+        @include respond-to(tablet) {
+            gap: $space-2lg;
+        }
+    }
+
+    &__title {}
+
+    &__text {
+        @include text-style;
+        max-width: 670px;
+    }
+    
+    &__btn-wrapper {
+        margin-top: $space-xs;
+        
+        @include respond-to(tablet) {
+            margin-top: $space-sm;
+        }
+    }
+}
+
+.white-text-section {
+
+    .text-section__title,
+    .text-section__content {
+        color: $white;
+    }
+}
+
+.text-white.text-section {
+    .text-section__title,
+    .text-section__content {
+        color: $white;
+    }
+}
+
+.bg-black {
+    .text-section__title {
+        color: $white !important;
+    }
+}

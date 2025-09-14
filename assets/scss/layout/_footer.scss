@@ -1,2 +1,215 @@
-@use "./variables" as *;
-@use "./mixins" as *;
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.site-footer {
+    background-color: $black;
+    color: $white;
+
+
+    &__top {
+        border-bottom: 1px solid $white;
+    }
+
+    &__menus {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        @include respond-to(desktop) {
+            flex-direction: row;
+        }
+    }
+
+    &__menus-main {
+        display: flex;
+        width: 80%;
+        justify-content: space-between;
+        
+        padding: $space-xl $space-xl $space-xl 0;
+        flex-direction: column;
+        @include respond-to(desktop) {
+            flex-direction: row;
+            border-right: 1px solid $white;
+        }
+    }
+
+    &__menu-column--contact {
+        width: 20%;
+        padding: 0 0 $space-xl;
+        @include respond-to(desktop) {
+           padding: $space-xl 0 $space-xl $space-sm;
+        }
+        @media (min-width: 1200px) {
+            padding: $space-xl 0 $space-xl $space-xl;
+        }
+        .site-footer__menu a {
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .site-footer__menu li {
+            margin-bottom: $space-xs;
+        }
+    }
+
+
+
+    &__menu-title {
+        font-family: 'Archivo Expanded', sans-serif;
+        font-size: 0.875rem;
+        color: rgb(210, 210, 210);
+        margin-bottom: $space-sm;
+    }
+
+    &__menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin-bottom: $space-sm;
+        }
+
+        a {
+            color: $white;
+            font-size: 1.25rem;
+            font-weight: 600;
+            font-family: 'Archivo Expanded', sans-serif;
+            display: inline-block;
+
+        }
+
+        &--standalone {
+            margin-top: $space-md;
+        }
+    }
+
+    &__contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: $space-xs;
+    }
+
+
+
+    &__social {
+        display: flex;
+        gap: $space-sm;
+        margin-bottom: $space-lg;
+    }
+
+    &__social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 32px;
+            height: 32px;
+            transition: opacity 0.3s ease;
+        }
+
+        &:hover img {
+            opacity: 0.8;
+        }
+    }
+
+    &__logo {
+        padding: $space-xl 0;
+        text-align: center;
+
+        &-img {
+            height: auto;
+            width: 100%;
+            max-height: 260px;
+        }
+    }
+
+    &__bottom {
+        border-top: 1px solid $white;
+        padding: $space-xl 0 $space-lg;
+        @include respond-to(desktop) {
+            padding: 0;
+        }
+        .container {
+            
+            display: flex;
+            flex-direction: column-reverse;
+            gap: $space-xl;
+            
+            @include respond-to(desktop) {
+                flex-direction: row;
+                align-items: center;
+                gap: unset;
+                justify-content: space-between;
+            }
+            > div {
+                    flex-grow: 1;
+            }
+          
+        }
+
+    }
+
+    &__copyright {
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    &__certificates {
+        
+        @include respond-to(desktop) {
+            border-left: 1px solid $white;
+             border-right: 1px solid $white;
+            padding: $space-md $space-xl;
+        }
+    }
+
+    &__eu-info {
+        justify-content: flex-end !important;
+    }
+    &__certificates,
+    &__eu-info {
+        display: flex;
+        flex-direction: column;
+        gap: $space-xs;
+
+        @include respond-to(desktop) {
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: $space-md;
+        }
+    }
+
+    &__cert-label,
+    &__eu-label {
+        font-size: 1rem;
+        font-weight: 300;
+        margin-bottom: $space-xs;
+        @include respond-to(desktop) {
+            margin-bottom: 0;
+        }
+    }
+
+    &__cert-img {
+        max-width: 93px;
+    }
+
+    &__eu-logos {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: $space-lg;
+        @include respond-to(desktop) {
+             align-items: center;
+              gap: $space-sm;
+        }
+        img {
+            width: auto;
+        }
+    }
+
+    &__eu-logo {
+        max-height: 48px;
+    }
+}

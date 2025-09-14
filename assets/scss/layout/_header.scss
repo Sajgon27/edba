@@ -1,2 +1,38 @@
-@use "./variables" as *;
-@use "./mixins" as *;
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.header {
+    display: flex;
+    position: absolute;
+    background-color: transparent;
+    z-index: 10;
+    width: 100%;
+    border-bottom: 1px solid $white;
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        border-right: 1px solid $white;
+        padding: $space-md 0;
+        padding-right: 25px !important;
+    }
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: $space-lg;
+    }
+
+    &__toggle {
+        width:36px;
+        height: 36px;
+        cursor: pointer;
+    }
+
+    .line {
+        fill: white;
+        transition: width 0.3s ease;
+    }
+
+    svg:hover .line {
+        width: 100%;
+    }
+}

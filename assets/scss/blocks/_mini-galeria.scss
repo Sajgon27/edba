@@ -38,10 +38,13 @@
   }
 
   &__number {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: $orange;
     margin-bottom: $space-xs;
+    @include respond-to(desktop) {
+      font-size: 4.5rem;
+    }
   }
 
   &__title {
@@ -65,6 +68,7 @@
       
       .swiper {
         width: 100%;
+      //  padding-bottom: $space-lg;
        
       }
       

@@ -27,31 +27,47 @@
     min-height: 260px;
     background-color: $white;
     position: relative;
+  
     border: 1px solid $black;
 
-    @include respond-to(tablet) {
 
+    @include respond-to(tablet) {
+      border-top: 0;
+      border-left: 0;
+      &:nth-child(odd) {
+        border-left: 1px solid $black;
+      }
+      &:nth-child(1), &:nth-child(2) {
+        border-top: 1px solid $black;
+      }
     }
 
     @include respond-to(desktop) {
-        &:nth-child(3n+2) {
-            border-right: 0;
-            border-left: 0;
-        }
-        &:last-child {
-            border-right: 1px solid $black;
-        }
+      &:nth-child(odd) {
+        border-left: 0;
+      }
+      &:nth-child(3) {
+        border-top: 1px solid $black;
+      }
+       &:nth-child(1) , &:nth-child(4) , &:nth-child(7) {
+        border-left: 1px solid $black;
+      }
     }
 
+
     @media (min-width: 1300px) {
-        border-left: 1px solid $black !important;
-        border-right: 1px solid $black !important;
-        &:not(:nth-child(4n)) {
-            border-right: 0 !important;
-        }
-        &:nth-child(-n+4) {
-            border-bottom: 0 !important;
-        }
+      &:first-child {
+        border-left: 1px solid $black;
+      }
+      &:nth-child(-n+4) {
+        border-top: 1px solid $black;
+      }
+      &:nth-child(4), &:nth-child(7) {
+        border-left: 0;
+      }
+      &:nth-child(5) {
+        border-left: 1px solid $black;
+      }
     }
 
 
@@ -110,6 +126,27 @@
       &-active {
         opacity: 1;
       }
+    }
+  }
+}
+
+
+.branze-boxy-3-col {
+  .branze-boxy__container  {
+    @media (min-width: 1300px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .branze-boxy__box {
+    @include respond-to(desktop) {
+      &:nth-child(4) {
+        border-left: 1px solid $black;
+        border-top: 0;
+      }
+      &:nth-child(5) {
+        border-left: 0
+      }
+
     }
   }
 }

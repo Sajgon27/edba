@@ -5,20 +5,32 @@
     display: flex;
     position: absolute;
     background-color: transparent;
+    justify-content: center;
     z-index: 10;
     width: 100%;
     border-bottom: 1px solid $white;
+    .container {
+        margin: 0 !important;
+    }
     &__inner {
         display: flex;
         justify-content: space-between;
         border-right: 1px solid $white;
-        padding: $space-md 0;
-        padding-right: 25px !important;
+        padding: $space-sm 25px $space-sm 0;
+        gap:$space-lg;
+        @include respond-to(tablet) {
+            gap: unset;
+            padding: $space-md 25px $space-md 0;
+        }
+       
     }
     &__logo {
         display: flex;
         align-items: center;
-        gap: $space-lg;
+        gap: $space-sm;
+        @include respond-to(tablet) {
+           gap: $space-lg;
+        }
     }
 
     &__toggle {
@@ -26,6 +38,31 @@
         height: 36px;
         cursor: pointer;
     }
+    &__lang-switcher {
+        color: $white;
+        display: none;
+        align-items: center;
+        padding: 0 $space-lg;
+        @include respond-to(tablet) {
+            display: flex;
+        }
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: $space-sm;
+        }
+        a {
+            color: $white;
+            font-size: 1.25rem;
+            font-weight: 400;
+            padding-bottom: 4px;
+        }
+        .active {
+            font-weight: 600;
+            border-bottom: 1px solid $white;
+        }
+    }
+ 
 
     .line {
         fill: white;
@@ -36,3 +73,14 @@
         width: 100%;
     }
 }
+
+   .lang-switcher-mobile {
+        display: flex !important;
+        align-items: center;
+        gap: $space-sm;
+        margin-top: auto;
+        padding-bottom: $space-lg;
+        @include respond-to(tablet) {
+            display: none !important;
+        }
+    }

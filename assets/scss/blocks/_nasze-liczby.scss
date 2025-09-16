@@ -25,7 +25,7 @@
   &__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: $space-xl;
+    gap: $space-2lg;
 
     @include respond-to(mobile) {
       grid-template-columns: repeat(2, 1fr);

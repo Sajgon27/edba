@@ -161,20 +161,27 @@
   }
 }
 // SPECIAL STYLING FOR SZLIFIEROWANIE I POLEROWANIE PAGE
-.page-id-330 .indent-span {
+.page-id-330 , .page-id-950 {
+  .indent-span {
   @include respond-to(tablet) {
     padding-right: 100px !important;
   }
   @include respond-to(desktop) {
-    padding-right: 270px !important;
+    padding-right: 220px !important;
   }
-     @media (min-width: 1500px) {
-       padding-right: 310px !important;
+     @media (min-width: 1520px) {
+       padding-right: 290px !important;
     }
+}
+div.hero-page__content {
+  @include respond-to(tablet) {
+    justify-content: space-between !important;
+  }
+}
 }
 
 // SPECIAL STYLING FOR BRANZA MORSKA PAGE
-.page-id-437  {
+.page-id-437 , .page-id-911  {
   .indent-span {
   @include respond-to(tablet) {
     padding-right: 40px !important;
@@ -195,7 +202,7 @@
 }
 
 // SPECIAL STYLING FOR BRANZA SPOZYWCZA PAGE
-.page-id-457  {
+.page-id-457 , .page-id-914  {
   .indent-span {
   @include respond-to(tablet) {
     padding-right: 240px !important;
@@ -213,6 +220,31 @@
       }
    
     }
+}
+
+// KOMPLEKSOWOŚĆ PAGE
+.page-id-101 ,  .page-id-931 {
+  .hero-page__title {
+    font-size: 1.6rem;
+      @include respond-to(mobile) {
+      font-size: 2.6rem;
+       
+    }
+
+    @include respond-to(tablet) {
+      font-size: 3.5rem;
+    }
+
+    @include respond-to(desktop) {
+      font-size: 4.5rem;
+    }
+
+    @media (min-width: 1500px) {
+      font-size: 7.5rem;
+    }
+  }
+ 
+  
 }
 
 .hero-wrapped-video .hero-page__content {

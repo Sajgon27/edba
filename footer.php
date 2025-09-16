@@ -5,7 +5,7 @@
 	            <div class="site-footer__menus">
 	                <div class="site-footer__menus-main">
 	                    <div class="site-footer__menu-column">
-	                        <h4 class="site-footer__menu-title">Oferta</h4>
+	                        <h4 class="site-footer__menu-title"><?php _e('Oferta', 'edba'); ?></h4>
 	                        <?php wp_nav_menu([
                                 'theme_location' => 'footer1',
                                 'container'      => false,
@@ -15,7 +15,7 @@
 	                    </div>
 
 	                    <div class="site-footer__menu-column">
-	                        <h4 class="site-footer__menu-title">Branże</h4>
+	                        <h4 class="site-footer__menu-title"><?php _e('Branże', 'edba'); ?></h4>
 	                        <?php wp_nav_menu([
                                 'theme_location' => 'footer2',
                                 'container'      => false,
@@ -25,7 +25,7 @@
 	                    </div>
 
 	                    <div class="site-footer__menu-column">
-	                        <h4 class="site-footer__menu-title">O firmie</h4>
+	                        <h4 class="site-footer__menu-title"><?php _e('O firmie', 'edba'); ?></h4>
 	                        <?php wp_nav_menu([
                                 'theme_location' => 'footer3',
                                 'container'      => false,
@@ -85,14 +85,14 @@
 	    <div class="site-footer__bottom">
 	        <div class="container">
 	            <div class="site-footer__copyright">
-	                <p>Copyright © EDBA 2025. Wszelkie prawa zastrzeżone.</p>
+	                <p><?php _e('Copyright © EDBA 2025. Wszelkie prawa zastrzeżone.', 'edba'); ?></p>
 	            </div>
 	            <div class="site-footer__certificates">
-	                <span class="site-footer__cert-label">Certyfikaty</span>
-	                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/footer/certyfikat.webp" alt="Certyfikat" class="site-footer__cert-img" />
+	                <span class="site-footer__cert-label"><?php _e('Certyfikaty', 'edba'); ?></span>
+	                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/footer/certyfikat.webp" alt="<?php _e('Certyfikat', 'edba'); ?>" class="site-footer__cert-img" />
 	            </div>
 	            <div class="site-footer__eu-info">
-	                <span class="site-footer__eu-label">Projekt współfinansowany ze środków europejskich</span>
+	                <span class="site-footer__eu-label"><?php _e('Projekt współfinansowany ze środków europejskich', 'edba'); ?></span>
 	                <div class="site-footer__eu-logos">
 	                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/footer/fundusze.svg" alt="Fundusze Europejskie" class="site-footer__eu-logo" />
 	                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/footer/polska.svg" alt="Rzeczpospolita Polska" class="site-footer__eu-logo" />

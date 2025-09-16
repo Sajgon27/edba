@@ -16,7 +16,7 @@ $boxy = $kontrola_jakosci['box'] ?? [];
         ]);
         ?>
         <div class="kontrola__cta">
-            <a href="#" class="btn btn--primary">
+            <a href="<?php echo esc_url(get_permalink(156)); ?>" class="btn btn--primary">
                 <?php _e('Czytaj więcej', 'edba'); ?>
             </a>
         </div>

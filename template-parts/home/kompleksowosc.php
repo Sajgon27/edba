@@ -17,15 +17,8 @@ $tekst = $kompleksowosc['tekst'] ?? '';
             <?php if ($tekst) : ?>
                 <div class="kompleksowosc__content">
                     <h2 class="kompleksowosc__title">
-                        Dzięki <span  class="text-highlight">kompleksowej obsłudze <svg viewBox="0 0 36 36">
-
-                                <line x1="5" y1="31" x2="31" y2="5" stroke="#D94F30" stroke-width="3" stroke-linecap="butt" />
-                                <line x1="4" y1="4" x2="32" y2="4" stroke="#D94F30" stroke-width="3" stroke-linecap="square" />
-                                <line x1="32" y1="4" x2="32" y2="32" stroke="#D94F30" stroke-width="3" stroke-linecap="square" />
-                            </svg></span>
-                        projektów zapewniamy pełne wsparcie na każdym etapie
-                        produkcji – od pomysłu przez techniczne konsultacje
-                        po gotowy produkt.
+                        <?php echo esc_html__('Dzięki', 'edba'); ?> <span class="text-highlight"><?php echo esc_html__('kompleksowej obsłudze', 'edba'); ?> 🡥</span>
+                        <?php echo esc_html__('projektów zapewniamy pełne wsparcie na każdym etapie produkcji – od pomysłu przez techniczne konsultacje po gotowy produkt.', 'edba'); ?>
                     </h2>
                     <p class="kompleksowosc__text"><?php echo wp_kses_post($tekst); ?></p>
                 </div>

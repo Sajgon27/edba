@@ -1,15 +1,110 @@
-// Home Page JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Swiper for News Section on Mobile
-    const aktualnosciSwiper = new Swiper('.aktualnosci__swiper .swiper-container', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        pagination: {
-            el: '.aktualnosci__swiper .swiper-pagination',
-            clickable: true,
+// Variable to store the Lenis smooth scrolling object
+let lenis;
+
+// Selecting DOM elements
+
+const contentElements = [...document.querySelectorAll(".content--sticky")];
+const totalContentElements = contentElements.length;
+console.log("Total content elements:", totalContentElements);
+// Initializes Lenis for smooth scrolling with specific properties
+const initSmoothScrolling = () => {
+  // Instantiate the Lenis object with specified properties
+  lenis = new Lenis({
+    lerp: 0.2, // Lower values create a smoother scroll effect
+    smoothWheel: true, // Enables smooth scrolling for mouse wheel events
+  });
+
+  // Update ScrollTrigger each time the user scrolls
+  lenis.on("scroll", () => ScrollTrigger.update());
+
+  // Define a function to run at each animation frame
+  const scrollFn = (time) => {
+    lenis.raf(time); // Run Lenis' requestAnimationFrame method
+    requestAnimationFrame(scrollFn); // Recursively call scrollFn on each frame
+  };
+  // Start the animation frame loop
+  requestAnimationFrame(scrollFn);
+};
+
+// Function to handle scroll-triggered animations
+const scroll = () => {
+  contentElements.forEach((el, position) => {
+    const isLast = position === totalContentElements - 1;
+    const isPreLast = position === totalContentElements - 2;
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: () => {
+            if (isLast) {
+              return "top top";
+            } else if (isPreLast) {
+              return "bottom top";
+            } else {
+              return "bottom+=100% top";
+            }
+          },
+          end: "+=100%",
+          scrub: true,
         },
-        autoHeight: true,
-    });
-    
-    // GSAP Animations or other JS functionality can be added here
+      })
+      .to(
+        el,
+        {
+          ease: "none",
+          yPercent: -100,
+        },
+        0
+      )
+      // Animate the content inner image
+      .fromTo(
+        el.querySelector(".content__img"),
+        {
+          yPercent: 20,
+          rotation: 40,
+          scale: 0.8,
+          filter: "contrast(400%)",
+        },
+        {
+          ease: "none",
+          yPercent: -100,
+          rotation: 0,
+          scale: 1,
+          filter: "contrast(100%)",
+          scrollTrigger: {
+            trigger: el,
+            start: "top bottom",
+            end: "max",
+            scrub: true,
+          },
+        },
+        0
+      );
+  });
+};
+
+// Initialization function
+const init = () => {
+  initSmoothScrolling(); // Initialize Lenis for smooth scrolling
+  scroll(); // Apply scroll-triggered animations
+};
+
+// Home Page JavaScript
+document.addEventListener("DOMContentLoaded", function () {
+  // Initialize Swiper for News Section on Mobile
+  const aktualnosciSwiper = new Swiper(
+    ".aktualnosci__swiper .swiper-container",
+    {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      pagination: {
+        el: ".aktualnosci__swiper .swiper-pagination",
+        clickable: true,
+      },
+      autoHeight: true,
+    }
+  );
+
+  // GSAP Animations or other JS functionality can be added here
 });

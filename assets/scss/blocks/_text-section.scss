@@ -24,7 +24,7 @@
         width: 100%;
 
         @include respond-to(tablet) {
-            width: 80;
+            width: 80%;
 
         }
 
@@ -89,4 +89,8 @@
         line-height: 1.5 !important;
         max-width: 1100px !important;
     }
+}
+
+.text-orange {
+    color: $orange !important;
 }

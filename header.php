@@ -80,10 +80,24 @@
                     ));
                     ?>
                 </div>
+                <div class="header__lang-switcher lang-switcher-mobile">
+                    <?php
+                    $languages = apply_filters('wpml_active_languages', NULL, 'skip_missing=0&orderby=code');
+
+                    if (!empty($languages)) {
+                        echo '<div class="lang-switcher">';
+                        foreach ($languages as $lang) {
+                            $active_class = $lang['active'] ? 'active' : '';
+                            echo '<a href="' . esc_url($lang['url']) . '" class="' . $active_class . '">' . esc_html(strtoupper($lang['code'])) . '</a>';
+                        }
+                        echo '</div>';
+                    }
+                    ?>
+                </div>
                 <div class="fullscreen-menu__footer">
                     <div class="fullscreen-menu__contact">
                         <div class="contact-info">
-                            <h6>Dane kontaktowe:</h6>
+                            <h6><?php _e('Dane kontaktowe:', 'edba'); ?></h6>
                             <div class="contact-info__inner">
                                 <div class="contact-data">
                                     <a href="mailto:info@edba.pl">info@edba.pl</a>
@@ -99,7 +113,7 @@
 
                     </div>
                     <div class="fullscreen-menu__social">
-                        <h6>Obserwuj nas na:</h6>
+                        <h6><?php _e('Obserwuj nas na:', 'edba'); ?></h6>
                         <div class="social-icons">
                             <a href="#" aria-label="Facebook">
                                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/icons/socialmedia/fb.svg'); ?>" alt="Facebook" />
@@ -116,3 +130,45 @@
             </div>
         </div>
     </div>
+
+    <!--
+    <div id="video-intro">
+  <video autoplay muted playsinline onended="hideVideo()" id="intro-video">
+    <source src="http://edba.local/wp-content/uploads/2025/09/Animacja_edba1.mp4" type="video/mp4">
+  </video>
+</div>
+
+<script>
+  const video = document.getElementById("intro-video");
+  const container = document.getElementById("video-intro");
+
+  video.addEventListener("ended", () => {
+    container.classList.add("fade-out");
+    setTimeout(() => {
+      container.style.display = "none";
+    }, 1000); // matches CSS transition time
+  });
+</script>
+
+<style>
+#video-intro {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: black;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.3s ease; /* fade speed */
+}
+
+#video-intro.fade-out {
+  opacity: 0;
+}
+
+#video-intro video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+</style>
+
+                -->

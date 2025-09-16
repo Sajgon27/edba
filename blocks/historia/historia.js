@@ -185,7 +185,7 @@ function initHistoriaSwipers() {
             } else if (windowWidth >= 768) {
                 return 2; // Tablet - show 2 items
             } else {
-                return 1.5; // Mobile - show 1.5 items
+                return 1.1; // Mobile - show 1.5 items
             }
         }
         

@@ -14,12 +14,12 @@
   
   &__image-wrapper {
     width: 100%;
-    margin-bottom: $space-md;
+    margin-bottom: $space-lg;
         height: calc(100% - 64px);
     @include respond-to(desktop) {
       position: absolute;
       left: 0;
-      width: 32%;
+      width: 31%;
     height: calc(100% - 124px);
       margin-bottom: 0;
      
@@ -68,6 +68,7 @@
     margin-top: $space-lg;
     @include respond-to(desktop) {
       margin-top: $space-2lg;
+      max-width: 800px;
     }
   }
   
@@ -79,7 +80,7 @@
       @include respond-to(tablet) {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: $space-md;
+        gap:$space-2lg $space-md;
         
       }
     }
@@ -123,7 +124,7 @@
       
       .swiper {
         width: 100%;
-        padding-bottom: $space-xl; // Space for pagination
+
       }
       
       .swiper-pagination {

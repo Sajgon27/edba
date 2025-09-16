@@ -38,7 +38,7 @@ $liczba = $mapa['liczba'] ?? '21';
             </div>
             <div class="mapa__stats">
                 <div class="mapa__stats-content">
-                    <span class="mapa__stats-label">KIERUNKÓW EKSPORTOWYCH</span>
+                    <span class="mapa__stats-label"><?php echo esc_html__('KIERUNKÓW EKSPORTOWYCH', 'edba'); ?></span>
                     <div class="mapa__stats-number"><?php echo esc_html($liczba); ?></div>
                 </div>
             </div>

@@ -126,3 +126,40 @@ add_theme_support( 'post-thumbnails' );
 
     ]);
 });
+
+function enqueue_gsap_scripts() {
+      // Load GSAP core from unpkg
+    wp_enqueue_script(
+        'gsap',
+        'https://unpkg.com/gsap@3/dist/gsap.min.js',
+        array(),
+        null,
+        true
+    );
+
+    // Load ScrollTrigger from unpkg (depends on GSAP)
+    wp_enqueue_script(
+        'gsap-scrolltrigger',
+        'https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js',
+        array('gsap'),
+        null,
+        true
+    );
+    // Lenis smooth scroll
+    wp_enqueue_script(
+        'lenis',
+        'https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.23/bundled/lenis.min.js',
+        array(),
+        null,
+        true
+    );
+    // Load your custom GSAP code (after GSAP + ScrollTrigger)
+    wp_enqueue_script(
+        'custom-gsap-script',
+        get_template_directory_uri() . '/assets/js/home.js',
+        array('gsap', 'gsap-scrolltrigger', 'lenis'),
+        null,
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_gsap_scripts');

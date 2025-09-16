@@ -24,7 +24,7 @@ $class = $args['class'] ?? '';
         
     <span class="label"><?php echo wp_kses_post($label); ?></span>
     <div class="text-section__content">
-        <h2 class="text-section__title"><?php echo esc_html($title); ?></h2>
+        <h2 class="text-section__title"><?php echo wp_kses_post($title); ?></h2>
         
         <?php if (!empty($text)) : ?>
             <p class="text-section__text"><?php echo esc_html($text); ?></p>

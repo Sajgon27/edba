@@ -2,7 +2,7 @@
 @use "../mixins" as *;
 
 .historia {
-  padding: $space-xl 0;
+  padding: $space-2lg 0;
   overflow: hidden;
 
   @include respond-to(desktop) {
@@ -11,7 +11,7 @@
 
   &__wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
 
     @include respond-to(desktop) {
       flex-direction: row;
@@ -27,12 +27,12 @@
     overflow: hidden;
 
     @include respond-to(tablet) {
-      height: 600px;
+      height: 500px;
     }
 
     @include respond-to(desktop) {
       width: 40%;
-      height: 800px;
+      height: 620px;
     }
   }
 
@@ -68,9 +68,10 @@
 
   &__content {
     width: 100%;
-
+    margin-bottom: $space-2lg;
     @include respond-to(desktop) {
       width: 60%;
+      margin-bottom: 0;
     }
   }
 
@@ -100,8 +101,11 @@
   }
 
   &__timeline {
-    margin-top: auto;
+    margin-top: $space-lg;
     overflow: hidden;
+    @include respond-to(desktop) {
+       margin-top: auto;
+    }
   }
 
   &__timeline-container {

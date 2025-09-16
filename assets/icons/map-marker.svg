@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36" height="50" viewBox="0 0 36 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Location pin shape -->
+  <path d="M18 0C8.059 0 0 8.059 0 18C0 28.779 14.411 46.171 17.213 49.586C17.517 49.952 18.049 50 18.4 49.707C23.531 44.643 36 29.52 36 18C36 8.059 27.941 0 18 0Z" fill="#C74D2B"/>
+  
+  <!-- White circle in the middle -->
+  <circle cx="18" cy="18" r="8" fill="white"/>
+</svg>

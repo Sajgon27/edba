@@ -13,7 +13,7 @@ get_header();
     <?php 
     // Include the hero-simple component at the top
     get_template_part('template-parts/components/hero-simple', null, [
-        'title' => 'AKTUALNOŚCI',
+        'title' => esc_html__('AKTUALNOŚCI', 'edba'),
     ]); 
     ?>
 

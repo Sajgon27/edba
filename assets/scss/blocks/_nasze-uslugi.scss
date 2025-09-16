@@ -41,7 +41,17 @@
     min-height: 260px;
     height: 100%;
     transition: all 0.3s ease;
-
+       &:nth-child(2) {
+    border-top: 0;
+    border-bottom: 0;
+       }
+    @include respond-to(desktop) {
+      &:nth-child(2) {
+   border-top: 1px solid $black;
+      border-bottom: 1px solid $black;
+      }
+   
+    }
     &:hover {
       .nasze-uslugi__title::after {
         transform: translateY(-5px) translateX(5px);
@@ -98,6 +108,9 @@
     &:last-child {
       border-bottom: 1px solid $black;
     }
+    &:nth-child(2) {
+        border-top: 1px solid $black;
+    }
     @include respond-to(tablet) {
       &:first-child {
         border-right: 0;
@@ -105,6 +118,7 @@
       }
       &:nth-child(2) {
         border-bottom: 0;
+      
       }
       &:nth-child(3) {
         border-right: 0;
